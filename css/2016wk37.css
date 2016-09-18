@@ -1,0 +1,28 @@
+body {
+  background: #111118;
+  color: #224e34;
+  margin: 0;
+}
+.container {
+  position: absolute;
+  height: 100%;
+  width: 100%;  
+}
+.his-house-logo {
+	fill: #224e34;
+	stroke: #224e34;
+}
+.headline:hover * {
+	fill: 	#809e8c;
+	stroke: #809e8c;
+	color:  #809e8c;	
+}
+/*
+.headline .flickr {
+   color: transparent;
+   text-shadow: #224e34 0 0 1px;
+
+   -webkit-transition: text-shadow 0.2s ease-in-out;
+   -moz-transition:    text-shadow 0.2s ease-in-out;
+   transition:         text-shadow 0.2s ease-in-out;
+}*/
