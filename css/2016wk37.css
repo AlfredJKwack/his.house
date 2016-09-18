@@ -12,7 +12,7 @@ body {
 	fill:    #091309;
 	stroke:  #091309;
 }
-.headline:hover * {
+.headline:hover .eye {
   color:  #809e8c;  
 	fill: 	#809e8c;
 	stroke: #809e8c;

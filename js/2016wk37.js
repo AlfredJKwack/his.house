@@ -5,8 +5,8 @@
 setInterval(function() {
 
   var myObjs = document.getElementsByClassName("his-house-logo");
-  var color1 = '091309';
-  var color2 = '10250c';
+  var color1 = '224e34';
+  var color2 = '809e8c';
   var ratio = 0.5;
 
   var hex = function(x) {
