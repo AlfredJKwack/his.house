@@ -1,44 +1,4 @@
 //============================================================
-// Logo Flickering
-// ===========================================================
-
-setInterval(function() {
-
-  var myObjs = document.getElementsByClassName("his-house-logo");
-  var color1 = '224e34';
-  var color2 = '809e8c';
-  var ratio = 0.5;
-
-  var hex = function(x) {
-      x = x.toString(16);
-      return (x.length == 1) ? '0' + x : x;
-  };
-
-  ratio = Math.random();
-
-  var r = Math.ceil(parseInt(color1.substring(0,2), 16) * ratio + parseInt(color2.substring(0,2), 16) * (1-ratio));
-  var g = Math.ceil(parseInt(color1.substring(2,4), 16) * ratio + parseInt(color2.substring(2,4), 16) * (1-ratio));
-  var b = Math.ceil(parseInt(color1.substring(4,6), 16) * ratio + parseInt(color2.substring(4,6), 16) * (1-ratio));
-
-  var middle = hex(r) + hex(g) + hex(b);
-
-  Array.prototype.forEach.call(myObjs, function(el) {
-      el.style.stroke = "#" + middle;
-  });
-
-  myObjs = document.getElementsByClassName("flickr")
-  Array.prototype.forEach.call(myObjs, function(el) {
-    el.style.textShadow = "-1px -1px 0 #" + middle +", 1px -1px 0 #" + middle +", -1px 1px 0 #" + middle +", 1px 1px 0 #" + middle;
-  });  
-  
-
-}, 200);
-
-
-
-
-
-//============================================================
 //
 // Copyright (C) 2013 Matthew Wagerfield
 //
@@ -1300,8 +1260,8 @@ FSS.SVGRenderer.prototype.formatStyle = function(color) {
     count: 2,
     xyScalar: 1,
     zOffset: 100,
-    ambient: '#090f0b',
-    diffuse: '#113107',
+    ambient: '#FFE4B5',
+    diffuse: '#FFEBCD',
     speed: 0.0002,
     gravity: 500,
     dampening: 0.95,

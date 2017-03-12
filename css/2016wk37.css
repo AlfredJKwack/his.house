@@ -10,10 +10,16 @@ body {
 }
 .his-house-logo {
 	fill:    #091309;
-	stroke:  #091309;
+	stroke:  #F5F5DC;
+}
+.headline .eye {
+  color:  #F5F5DC;
+  stroke: #F5F5DC;
 }
 .headline:hover .eye {
-  color:  #809e8c;  
-	fill: 	#809e8c;
-	stroke: #809e8c;
+  color:  #D2B48C;  
+  stroke: #D2B48C;
+}
+.flickr {
+  textShadow: -1px -1px 0 #F5F5DC, 1px -1px 0 #F5F5DC, -1px 1px 0 #F5F5DC, 1px 1px 0 #F5F5DC;
 }
