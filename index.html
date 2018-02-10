@@ -1,36 +1,78 @@
 <!DOCTYPE html>
-<html >
-  <head>
-    <meta charset="UTF-8">
-    <title>His House</title>
-    
-    <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.css' rel='stylesheet' />
+<html>
+<head>
 
-    <style>
-        body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
-    </style>
+  <meta charset=utf-8 />
+  <title>His house</title>
 
-  </head>
+  <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' />
+  <meta charset='UTF-8'/>
+  <meta name='robots' content='noindex, nofollow' />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />  
 
-  <body>
-    <div id="container" class="container">
-      <div id="output" class="container"></div>
-      <div class="wrapper">
-        <div id='map'></div>
-        <script>
-          mapboxgl.accessToken = 'pk.eyJ1IjoiYWxmcmVkamt3YWNrIiwiYSI6ImNqZGhheXpoeDB1ZjIyeHBpNjRhNnIwdDAifQ.4lJHofm8CBd2lKB7djcepQ';
-          var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/light-v9',
-            center: [4.3150, 52.1032],
-            zoom: 16
-          });
-          map.addControl(new mapboxgl.NavigationControl());
-        </script>
+  <meta name='twitter:site' content='His House'>
+  <meta property='og:site_name' content='His House' />
+  <meta name='twitter:url' content='http://his.house/' />
+  <meta property='og:url' content='http://his.house/'>
+  <meta name='twitter:title' content='His house' />
+  <meta property='og:title' content='His house' />
+  <meta name='twitter:description' content='A painstakingly intricate map to his house, past present and who knows future.' />
+  <meta property='og:description' content='A painstakingly intricate map to his house, past present and who knows future.' />
+  <meta name='twitter:image' content='https://a.tiles.mapbox.com/v4/examples.a4c252ab/16/33549/21623@2x.png?access_token=pk.eyJ1IjoiYWxmcmVkamt3YWNrIiwiYSI6ImNqZGhheXpoeDB1ZjIyeHBpNjRhNnIwdDAifQ.4lJHofm8CBd2lKB7djcepQ' />
+  <meta property='og:image' content='https://a.tiles.mapbox.com/v4/examples.a4c252ab/16/33549/21623@2x.png?access_token=pk.eyJ1IjoiYWxmcmVkamt3YWNrIiwiYSI6ImNqZGhheXpoeDB1ZjIyeHBpNjRhNnIwdDAifQ.4lJHofm8CBd2lKB7djcepQ' />
+  <meta name='twitter:image:width' content='512'>
+  <meta name='twitter:image:height' content='512'>
+  <meta property='og:image:width' content='512'>
+  <meta property='og:image:height' content='5125'>
+  <meta name='twitter:card' content='summary_large_image'>
+  <meta property='og:type' content='website' />
+  <base target='_parent' />
 
-      </div>
-    </div>
-  </body>
+
+  <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+  <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+
+  <style>
+    body { margin:0; padding:0; }
+    #map { position:absolute; top:0; bottom:0; width:100%; }
+  </style>
+
+</head>
+
+<body>
+  <div id='map'></div>
+
+  <script>
+    var locations = {
+      TheHague    : [52.103210, 4.315351],
+      Boitsfort   : [50.807869, 4.402557],
+      Chantilly   : [49.195213, 2.467015],
+      Ixelles1    : [50.822225, 4.363848],
+      Ixelles2    : [50.815861, 4.378379],
+      Berg        : [50.929705, 4.547924]
+    };
+
+    L.mapbox.accessToken = 'pk.eyJ1IjoiYWxmcmVkamt3YWNrIiwiYSI6ImNqZGhheXpoeDB1ZjIyeHBpNjRhNnIwdDAifQ.4lJHofm8CBd2lKB7djcepQ';
+    var mapboxTiles = L.tileLayer('https://api.mapbox.com/v4/examples.a4c252ab/{z}/{x}/{y}{r}.png?access_token=' + L.mapbox.accessToken, {
+      attribution: '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    });
+    var map = L.map('map')
+      .addLayer(mapboxTiles)
+      .setView(locations.TheHague, 17);
+
+    L.marker(locations.TheHague, {
+        icon: L.mapbox.marker.icon({
+            'marker-size': 'small',
+            'marker-symbol': 'rocket',
+            'marker-color': '#B8001E'
+        })
+    }).addTo(map);   
+
+    L.marker.on('click', function(e) {
+        map.panTo(e.layer.getLatLng());
+    });     
+
+  </script>
+</body>
 </html>
