@@ -29,19 +29,30 @@
   <meta property='og:type' content='website' />
   <base target='_parent' />
 
-
-  <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script type="text/javascript" src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
   <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
 
   <style>
     body { margin:0; padding:0; }
     #map { position:absolute; top:0; bottom:0; width:100%; }
+    .story {position: absolute; top:1em; right: 1em;}
+    .story button {margin: 0.2em;padding: 0.2em; background-color: white;}
   </style>
 
 </head>
 
 <body>
   <div id='map'></div>
+
+  <section class="story">
+    <button class="story-btn" id="fly-to-thehague"  >Now        </button>
+    <button class="story-btn" id="fly-to-chantilly" >Recently   </button>
+    <button class="story-btn" id="fly-to-boitsfort" >Adulthood  </button>
+    <button class="story-btn" id="fly-to-ixelles2"  >College    </button>
+    <button class="story-btn" id="fly-to-ixelles1"  >Indepence  </button>
+    <button class="story-btn" id="fly-to-berg"      >Youth      </button>
+  </section>
 
   <script>
     var locations = {
@@ -53,25 +64,86 @@
       Berg        : [50.929705, 4.547924]
     };
 
+    /*  -----------                     -----------
+              Set up your map and display it 
+        -----------                     -----------  */  
+
     L.mapbox.accessToken = 'pk.eyJ1IjoiYWxmcmVkamt3YWNrIiwiYSI6ImNqZGhheXpoeDB1ZjIyeHBpNjRhNnIwdDAifQ.4lJHofm8CBd2lKB7djcepQ';
     var mapboxTiles = L.tileLayer('https://api.mapbox.com/v4/examples.a4c252ab/{z}/{x}/{y}{r}.png?access_token=' + L.mapbox.accessToken, {
       attribution: '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
-    var map = L.map('map')
-      .addLayer(mapboxTiles)
-      .setView(locations.TheHague, 17);
+    var map = L.map('map',{ minZoom: 10, maxZoom: 17 }).addLayer( mapboxTiles ).setView( locations.TheHague, 15 );
 
-    L.marker(locations.TheHague, {
+    /*  -----------                     -----------
+              Add location markers to the map 
+        -----------                     -----------  */  
+    var addMarker = function(latlng) {
+      
+      var icn = {
         icon: L.mapbox.marker.icon({
-            'marker-size': 'small',
-            'marker-symbol': 'rocket',
-            'marker-color': '#B8001E'
+          'marker-size'   : 'small',
+          'marker-symbol' : 'rocket',
+          'marker-color'  : '#B8001E'
         })
-    }).addTo(map);   
+      };
 
-    L.marker.on('click', function(e) {
-        map.panTo(e.layer.getLatLng());
-    });     
+      L.marker( latlng, icn )
+       .addTo( map )
+       .on( 'click', function(e) { 
+          map.panTo(latlng,{easeLinearity : 0.05, duration: 1});
+          // add a check for zooom level and zoom in/out as necessary
+        });
+    
+    };
+
+    for (var key in locations) {
+      if (locations.hasOwnProperty(key)) {
+        addMarker( locations[key] );   
+      }
+    }
+
+    /*  -----------                     -----------
+              Add the ability to fly around 
+        -----------                     -----------  */  
+
+    // NOTE: Preload high level zooms so that you have them available in cache.
+
+    $('#fly-to-thehague').on('click', function(){
+      //$(all_buttons).removeClass('pure-button-disabled');
+      // probably want something that looks at whether a marker is on the map, and at what zoom level we are.
+      
+      map.flyTo(locations.TheHague, 10);
+    });
+    $('#fly-to-chantilly').on('click', function(){
+      //$(all_buttons).removeClass('pure-button-disabled');
+      // probably want something that looks at whether a marker is on the map, and at what zoom level we are.
+      
+      map.flyTo(locations.Chantilly, 10);
+    });
+    $('#fly-to-boitsfort').on('click', function(){
+      //$(all_buttons).removeClass('pure-button-disabled');
+      // probably want something that looks at whether a marker is on the map, and at what zoom level we are.
+      
+      map.flyTo(locations.Boitsfort, 10);
+    });
+    $('#fly-to-ixelles2').on('click', function(){
+      //$(all_buttons).removeClass('pure-button-disabled');
+      // probably want something that looks at whether a marker is on the map, and at what zoom level we are.
+      
+      map.flyTo(locations.Ixelles2, 10);
+    });
+    $('#fly-to-ixelles1').on('click', function(){
+      //$(all_buttons).removeClass('pure-button-disabled');
+      // probably want something that looks at whether a marker is on the map, and at what zoom level we are.
+      
+      map.flyTo(locations.Ixelles1, 10);
+    });
+    $('#fly-to-berg').on('click', function(){
+      //$(all_buttons).removeClass('pure-button-disabled');
+      // probably want something that looks at whether a marker is on the map, and at what zoom level we are.
+      
+      map.flyTo(locations.Berg, 10);
+    }); 
 
   </script>
 </body>
