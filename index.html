@@ -1,46 +1,99 @@
 <!DOCTYPE html>
-<html >
-  <head>
-    <meta charset="UTF-8">
-    <title>His House</title>
-    
-    <link rel="stylesheet" type="text/css" media="screen" href="css/normalize.css">
-    <link href="https://fonts.googleapis.com/css?family=Courgette|Lalezar" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/2016wk37.css">
-  </head>
+<html>
+<head>
 
-  <body>
-    <div id="container" class="container">
-      <div id="output" class="container"></div>
-      <div class="wrapper">
-        <section class="headline">
-          <div class="hero-img" id="his-house-logo">
-            <svg width="100%" height="100%" viewBox="0 0 412 353" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
-                <g>
-                    <ellipse cx="203.349" cy="255.984" rx="9.689" ry="3.876" class="his-house-logo nose" />
-                    <path d="M277.415,225.819C282.062,220.265 283.589,208.936 280.675,196.774C276.869,180.903 266.962,169.671 258.552,171.686C258.331,171.741 258.137,171.834 257.924,171.903C253.475,154.986 224.305,146.827 196.35,144.881C162.119,142.486 133.531,165.233 132.388,166.148C130.892,167.357 130.508,169.473 131.481,171.132C131.717,171.531 133.225,174.047 135.822,177.647C131.864,182.186 128.477,188.906 126.59,196.774C123.721,208.727 125.136,219.901 129.605,225.552C123.787,230.199 120.024,237.551 120.024,245.814C120.024,257.321 127.33,267.065 137.322,270.197C149.964,294.385 175.327,310.005 203.473,310.005C231.646,310.005 257.048,294.343 269.675,270.1C279.512,266.871 286.682,257.209 286.682,245.81C286.678,237.702 283.047,230.482 277.415,225.819L277.415,225.819ZM215.093,292.153C212.55,290.548 208.229,289.486 203.349,289.486C198.466,289.486 194.148,290.541 191.602,292.153L191.602,281.254L215.101,281.254L215.093,292.153L215.093,292.153ZM262.482,255.74C261.358,255.74 260.304,255.48 259.319,255.031C254.393,269.321 244.014,281.111 230.607,287.975L230.607,273.495C230.607,269.216 227.135,265.744 222.856,265.744L183.846,265.744C179.567,265.744 176.095,269.216 176.095,273.495L176.095,287.839C162.785,280.944 152.476,269.185 147.596,254.957C146.554,255.453 145.41,255.736 144.209,255.736C139.383,255.736 135.515,251.291 135.515,245.803C135.515,240.315 139.383,235.873 144.209,235.873C144.298,235.873 144.383,235.9 144.476,235.904C144.499,233.005 144.755,229.462 145.197,225.788C148.48,222.986 151.522,218.688 153.887,213.397C162.646,216.025 172.169,218.006 182.23,219.118C209.981,222.168 235.293,218.044 251.719,209.235C254.133,216.231 257.73,221.943 261.703,225.482C262.16,229.261 262.431,232.912 262.447,235.888C262.455,235.888 262.462,235.885 262.47,235.885C267.296,235.885 271.164,240.326 271.164,245.818C271.164,251.31 267.307,255.74 262.482,255.74L262.482,255.74Z" style="fill-rule:nonzero;" class="his-house-logo face" />
-                    <a xlink:href="nowhere">
-                      <circle cx="177.025" cy="239.663" r="8.72" class="his-house-logo left eye" />
-                      <circle cx="229.673" cy="239.663" r="8.72" class="his-house-logo right eye" />
-                    </a>
-                </g>
-                <g transform="matrix(0.795335,0.60617,-0.60617,0.795335,140.76,-55.5344)">
-                    <g id="Layer2">
-                        <path d="M97.808,41.733C99.826,34.201 106.939,29.384 114.446,29.996L311.91,29.996C320.687,29.996 327.813,37.121 327.813,45.898C327.813,54.64 320.743,61.745 312.013,61.8L311.91,61.8L125.357,61.8L77.09,241.938C74.818,250.415 66.091,255.454 57.613,253.182C49.136,250.911 44.097,242.184 46.369,233.706L97.808,41.733Z" class="his-house-logo roof" />
-                    </g>
-                </g>
-            </svg>
-          </div>
-<!-- 
-          <h1 class="flickr">His house</h1>
-          <h2 class="flickr">Not the workplace <br />
-          nor the bar or the trail.</h2>
--->          
+  <meta charset=utf-8 />
+  <title>His house</title>
+
+  <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' />
+  <meta charset='UTF-8'/>
+  <meta name='robots' content='noindex, nofollow' />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />  
+
+  <meta name='twitter:site' content='His House'>
+  <meta property='og:site_name' content='His House' />
+  <meta name='twitter:url' content='http://his.house/' />
+  <meta property='og:url' content='http://his.house/'>
+  <meta name='twitter:title' content='His house' />
+  <meta property='og:title' content='His house' />
+  <meta name='twitter:description' content='A painstakingly intricate map to his house, past present and who knows future.' />
+  <meta property='og:description' content='A painstakingly intricate map to his house, past present and who knows future.' />
+  <meta name='twitter:image' content='https://a.tiles.mapbox.com/v4/examples.a4c252ab/16/33549/21623@2x.png?access_token=pk.eyJ1IjoiYWxmcmVkamt3YWNrIiwiYSI6ImNqZGhheXpoeDB1ZjIyeHBpNjRhNnIwdDAifQ.4lJHofm8CBd2lKB7djcepQ' />
+  <meta property='og:image' content='https://a.tiles.mapbox.com/v4/examples.a4c252ab/16/33549/21623@2x.png?access_token=pk.eyJ1IjoiYWxmcmVkamt3YWNrIiwiYSI6ImNqZGhheXpoeDB1ZjIyeHBpNjRhNnIwdDAifQ.4lJHofm8CBd2lKB7djcepQ' />
+  <meta name='twitter:image:width' content='512'>
+  <meta name='twitter:image:height' content='512'>
+  <meta property='og:image:width' content='512'>
+  <meta property='og:image:height' content='5125'>
+  <meta name='twitter:card' content='summary_large_image'>
+  <meta property='og:type' content='website' />
+  <base target='_parent' />
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link href='http://fonts.googleapis.com/css?family=Reenie+Beanie' rel='stylesheet' type='text/css'>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenLite.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/easing/EasePack.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.5/plugins/CSSPlugin.min.js"></script>
+  <script type="text/javascript" src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+  <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+  <script type="text/javascript" src="js/dragOn.min.js"></script>
+  <link href='css/style.css' rel='stylesheet' />
+
+
+</head>
+
+<body>
+  <div id='map'></div>
+
+  <div id="block_legend_credits">
+    <div id="blc_top"><h2><a href="#" id="action-title">Clues and notes</a></h2></div>
+    <div id="blc_content">
+      <div id="content_legend" style="display: block;">
+        <section class="lgd-offset-text"><b>Where's</b> this guy been over the years? Rumor has it he's <strong>moved around</strong> a bit.</section>
+        <section id="lgd-now" data-guid="pylb4985ll">
+          <a href="#" onclick="javascript:goToLoc('pylb4985ll');"><img src="img/bloc-notes-checkmark.svg" class="lgd-checked"></a>1)&nbsp;&nbsp;
+          He's living around here now. We know that much...
+        </section>
+        <section id="lgd-recently" data-guid="ya7qax17jm">
+          <a href="#" onclick="javascript:goToLoc('ya7qax17jm');"><img src="img/bloc-notes-checkmark.svg" class="lgd-checked invisible"></a>2)&nbsp;&nbsp;
+          Before that he was somewhere they made whipped cream like champs.
+          <span class="loc-description invisible">Chantilly, the birthplace of whipped cream it turns out</span>
+        </section>
+        <section class="lgd-offset-text">From childhood to adulthood he moved a bunch of times. Four different locations are rumored.</section>
+        <section id="lgd-adulthood" data-guid="mvvaltqz1y">
+          <a href="#" onclick="javascript:goToLoc('mvvaltqz1y');"><img src="img/bloc-notes-checkmark.svg" class="lgd-checked invisible"></a>3)&nbsp;
+          <span class="loc-description invisible">Watermael-Boitsfort, a village within the city.</span>
+        </section>
+        <section id="lgd-college" data-guid="icgst21r6s">
+          <a href="#" onclick="javascript:goToLoc('icgst21r6s');"><img src="img/bloc-notes-checkmark.svg" class="lgd-checked invisible"></a>4)&nbsp;&nbsp;
+          <span class="loc-description invisible">The university years spent partying and falling in love.</span>        
+        </section>
+        <section id="lgd-independence" data-guid="q0z4qkhaxt">
+          <a href="#" onclick="javascript:goToLoc('q0z4qkhaxt');"><img src="img/bloc-notes-checkmark.svg" class="lgd-checked invisible"></a>5)
+          <span class="loc-description invisible">Place du chatelain neighbourhood of Brussels where he gained independence.</span>
+        </section>
+        <section id="lgd-youth" data-guid="yx3cri7jjx">
+          <a href="#" onclick="javascript:goToLoc('yx3cri7jjx');"><img src="img/bloc-notes-checkmark.svg" class="lgd-checked invisible"></a>6)&nbsp;
+          <span class="loc-description invisible">Kampenhout, an unremakable town but nice to grow up in.</span>        
         </section>
       </div>
+      <div id="content_credits" style="display: none;">
+        None of this would have been possible without the fine tools made by: 
+        <ul>
+        <li>The ©<a href="https://www.mapbox.com/feedback/" title="A set of tools for laying out maps.">Mapbox</a> team who deliver delicous mapping tools for the masses.</li>
+        <li>The good folks at ©<a href="http://www.openstreetmap.org/copyright" title="An open source map of the world.">OpenStreetMap</a> and their contributors who provide open source maps of the world.</li>
+        <li>©<a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>, a wonderful means of bringing your custom maps to life on the web.</li>
+        <li>The long forgotten folks who built <a href="https://web.archive.org/web/*/http://www.webbricks.org/bricks/dragOn/">DragOn</a> which makes this little notepad well ... draggable.</li>
+        <li><a href="https://fonts.google.com/">Goole Fonts</a> which provides an endless source of inspiration and in particular James Grieshaber for the Reenie Beanie font used here.</li>
+        </ul>
+      </div>
     </div>
-    <script type="text/javascript" src="js/2016wk37.js"></script>
-    </script>
-  </body>
+    <div id="blc_tabs_legend" style="display: block;"></div>
+    <div id="blc_tabs_credits" style="display: none;"></div>
+    <div id="link_legend" class="blc_tabs"><a href="#" onclick="javascript:switch_tabs('legend');">Clues</a></div>
+    <div id="link_credits" class="blc_tabs"><a href="#" onclick="javascript:switch_tabs('credits');">Notes</a></div>
+  </div>
+
+  <script type="text/javascript" src="js/script.js"></script>
+</body>
 </html>
