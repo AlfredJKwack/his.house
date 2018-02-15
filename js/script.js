@@ -1,3 +1,8 @@
+/*  -----------                     -----------
+                     Polyfills
+    -----------                     -----------  */  
+// Array.prototype.find() is not supported in IE
+Array.prototype.find||Object.defineProperty(Array.prototype,"find",{value:function(r){if(null==this)throw new TypeError('"this" is null or not defined');var t=Object(this),e=t.length>>>0;if("function"!=typeof r)throw new TypeError("predicate must be a function");for(var n=arguments[1],o=0;o<e;){var i=t[o];if(r.call(n,i,o,t))return i;o++}}});
 
 /*  -----------                     -----------
          Set up some map layers for later 
