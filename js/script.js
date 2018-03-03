@@ -79,14 +79,6 @@ var data = [
   }                      
 ];
 
-var markerOne = L.icon({
-    iconUrl: '../img/map-marker1.svg',
-    iconSize:     [40, 58], 
-    iconAnchor:   [20, 29]
-});
-
-
-
 var addMarker = function( name, latlng, id, icon) {
   var opts = {
     icon: icon,
