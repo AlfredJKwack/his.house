@@ -30,7 +30,7 @@ var data = [
   {
     name:   'Watermael-Boitsfort',
     latLng: [50.807869, 4.402557],
-    guid:     'mvvaltqz1y',
+    guid:   'mvvaltqz1y',
     icon:   L.icon({
         iconUrl: '../img/map-marker2.svg',
         iconSize:     [48, 48], 
@@ -40,7 +40,7 @@ var data = [
   {
     name:   'Chantilly',
     latLng: [49.195213, 2.467015],
-    guid:     'ya7qax17jm',
+    guid:   'ya7qax17jm',
     icon:   L.icon({
         iconUrl: '../img/map-marker1.svg',
         iconSize:     [40, 58], 
@@ -50,7 +50,7 @@ var data = [
   {
     name:   'Chatelain',
     latLng: [50.822225, 4.363848],
-    guid:     'q0z4qkhaxt',
+    guid:   'q0z4qkhaxt',
     icon:   L.icon({
         iconUrl: '../img/map-marker3.svg',
         iconSize:     [60, 40], 
@@ -60,7 +60,7 @@ var data = [
   {
     name:   'ULB',
     latLng: [50.815861, 4.378379],
-    guid:     'icgst21r6s',
+    guid:   'icgst21r6s',
     icon:   L.icon({
         iconUrl: '../img/map-marker4.svg',
         iconSize:     [67, 47], 
@@ -70,7 +70,7 @@ var data = [
   {
     name:   'Berg',
     latLng: [50.929705, 4.547924],
-    guid:     'yx3cri7jjx',
+    guid:   'yx3cri7jjx',
     icon:   L.icon({
         iconUrl: '../img/map-marker1.svg',
         iconSize:     [40, 58], 
@@ -79,7 +79,42 @@ var data = [
   }                      
 ];
 
+/*  -----------                     -----------
+                Set up your markers
+    -----------                     -----------  */  
+var createDivIcon = function (iconOpts, svg) {
+
+  return L.divIcon({
+    iconSize:   iconOpts.iconSize,
+    iconAnchor: iconOpts.iconAnchor,
+    className:  'svg-icon',
+    html: svg
+  });
+  
+}
+
+var getMarkerSvg = function( callback, opts ) {
+
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState==4 && xhr.status == 200) {
+
+      var response = xhr.responseXML.getElementsByTagName('svg')[0].outerHTML;
+      var divIcon = createDivIcon(opts.icon.options, response)
+      callback( opts.name, opts.latLng, opts.guid, divIcon);
+
+    }
+  }  
+
+  xhr.open("GET", opts.icon.options.iconUrl);
+  xhr.setRequestHeader("Content-Type", "text/xml");
+  xhr.responseType = "document";
+  xhr.send();
+  
+}
+
 var addMarker = function( name, latlng, id, icon) {
+
   var opts = {
     icon: icon,
     title: name,
@@ -90,12 +125,11 @@ var addMarker = function( name, latlng, id, icon) {
    .addTo( houses )
    .on( 'click', function(e) { 
       map.panTo(latlng,{easeLinearity : 0.05, duration: 1});
-      // add a check for zooom level and zoom in/out as necessary
     });
 };
 
 for (var i = 0; i < data.length; i++) {
-  addMarker( data[i].name, data[i].latLng, data[i].guid, data[i].icon );
+  getMarkerSvg( addMarker, data[i] );
 }
 
 /*  -----------                     -----------
