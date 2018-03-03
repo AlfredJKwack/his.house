@@ -2,6 +2,7 @@ body {
 	margin:0; 
 	padding:0; 
 	font-family: 'Reenie Beanie', cursive;
+	line-height: 0.9em;
 	height: 100%;
 }
 a {
@@ -12,7 +13,8 @@ a {
 li {
     list-style-image: url(../img/bloc-notes-bullet.png);
     margin-left: -40px;
-    line-height: 25px;
+    line-height: 1rem;
+    padding-bottom: 0.33rem;
 }
 h2 {
     font-size: 25px;
