@@ -16,6 +16,10 @@ var houses = L.layerGroup();
 /*  -----------                     -----------
               Get yourself some data 
     -----------                     -----------  */  
+
+var defaultZoom = 15;
+var currZoom =  defaultZoom;
+
 var data = [
   {
     name:   'The Hague',
@@ -93,7 +97,7 @@ var createDivIcon = function (iconOpts, svg) {
   return L.divIcon({
     iconSize:   iconOpts.iconSize,
     iconAnchor: iconOpts.iconAnchor,
-    className:  'svg-icon',
+    className:  'icon-wrapper',
     html: svg
   });
   
@@ -157,6 +161,7 @@ for (var i = 0; i < data.length; i++) {
   getMarkerSvg( addMarker, data[i], data[i].icon.options.iconUrl );
 }
 
+
 /*  -----------                     -----------
           Set up your map and display it 
     -----------                     -----------  */  
@@ -171,9 +176,62 @@ var map = L.map('map', {
   attributionControl:false,
   minZoom   : 10, 
   maxZoom   : 17,
-  zoom      : 15,
+  zoom      : defaultZoom,
   center    : latLngHome,
   layers    : [ mapboxTiles, houses ]
+});
+
+/*  -----------                     -----------
+              Marker zooming effects 
+    -----------                     -----------  */  
+
+/**
+ * multiplies CSS values (width, height etc.) preserving their unit
+ * @param  {string} cssVal     T css value like -14px or 75%
+ * @param  {number} multiplier The multiplication value
+ * @return {string}            The css value multipied.
+ */
+var cssMultiply = function ( cssVal, multiplier ) {
+  var returnval = cssVal.substring(0, cssVal.match(/[A-Za-z]/).index) * multiplier
+  return returnval + cssVal.substring(cssVal.match(/[A-Za-z]/).index)
+}
+
+/**
+ * Changes the size of marker icons based on zoom level change
+ * @param  {number} oldZoom The previous Leaflet zoom level
+ * @param  {number} newZoom The current Leaflet zoom level
+ * @return {null}           this function does not return anything
+ */
+var zoomIcons = function ( oldZoom, newZoom ){
+
+  var zoomRatio = ( newZoom - oldZoom > 0 ) ? 1.5 : 0.666666667;  // 1.25 and 0.8 also works
+  var elements = document.getElementsByClassName( 'icon-wrapper' );
+
+  for (var i=0, max=elements.length; i < max; i++) {
+
+    elements[i].style.width      = cssMultiply( elements[i].style.width, zoomRatio );
+    elements[i].style.height     = cssMultiply( elements[i].style.height, zoomRatio );
+    elements[i].style.marginLeft = cssMultiply( elements[i].style.marginLeft, zoomRatio );
+    elements[i].style.marginTop  = cssMultiply( elements[i].style.marginTop, zoomRatio );
+
+    var pathEl = elements[i].getElementsByTagName('path');
+
+    if ( newZoom > defaultZoom ) {
+      pathEl[0].style['stroke-width'] = cssMultiply( pathEl[0].style['stroke-width'], zoomRatio  );
+    } else {
+      pathEl[0].style['stroke-width'] = '1.5px'
+    }
+
+  }   
+}
+
+map.on('zoomstart', function(){
+
+});
+
+map.on('zoomend', function() {
+  zoomIcons(currZoom, map.getZoom());
+  currZoom = map.getZoom();
 });
 
 /*  -----------                     -----------
