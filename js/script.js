@@ -225,10 +225,6 @@ var zoomIcons = function ( oldZoom, newZoom ){
   }   
 }
 
-map.on('zoomstart', function(){
-
-});
-
 map.on('zoomend', function() {
   zoomIcons(currZoom, map.getZoom());
   currZoom = map.getZoom();
