@@ -14,7 +14,7 @@ var mapboxTiles = L.tileLayer('https://api.mapbox.com/v4/examples.a4c252ab/{z}/{
 var houses = L.layerGroup();
 
 /*  -----------                     -----------
-          Add location markers to the map 
+              Get yourself some data 
     -----------                     -----------  */  
 var data = [
   {
@@ -82,8 +82,14 @@ var data = [
 /*  -----------                     -----------
                 Set up your markers
     -----------                     -----------  */  
-var createDivIcon = function (iconOpts, svg) {
 
+/**
+ * Creates a Leaflet divIcon object with custom XML contents
+ * @param  {ojbect} iconOpts A set of L.icon options
+ * @param  {string} svg      the SVG/XML to use inside
+ * @return {L.divIcon}       Leaflet divIcon
+ */
+var createDivIcon = function (iconOpts, svg) {
   return L.divIcon({
     iconSize:   iconOpts.iconSize,
     iconAnchor: iconOpts.iconAnchor,
@@ -93,43 +99,62 @@ var createDivIcon = function (iconOpts, svg) {
   
 }
 
-var getMarkerSvg = function( callback, opts ) {
+/**
+ * Formats input data into a Leaflet divIcon object
+ * @param  {object} data   input data 
+ * @param  {tring} strHtml an html string used for the leaflet divIcon
+ * @return {object}        L.divIcon object
+ */
+var formatMarker = function ( data, strHtml ) {
+  var output = { 
+    title: data.name, 
+    guid: data.guid, 
+    icon: createDivIcon( data.icon.options, strHtml ) 
+  };
+  return output;
+}
 
+/**
+ * Get an SVG file and pass its XML string onto a callback
+ * @param  {Function} callback The function we'd like to pass things back to.
+ * @param  {object}   opts     Simply passed onto the callback untouched
+ * @param  {string}   url      The location we'll get the SVG from with a GET.
+ * @return {function}          The callback function with 'opts' and SVG string.
+ */
+var getMarkerSvg = function( callback, opts, url ) {
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     if (xhr.readyState==4 && xhr.status == 200) {
-
       var response = xhr.responseXML.getElementsByTagName('svg')[0].outerHTML;
-      var divIcon = createDivIcon(opts.icon.options, response)
-      callback( opts.name, opts.latLng, opts.guid, divIcon);
-
+      callback( opts, response);
     }
   }  
-
-  xhr.open("GET", opts.icon.options.iconUrl);
+  xhr.open("GET", url);
   xhr.setRequestHeader("Content-Type", "text/xml");
   xhr.responseType = "document";
   xhr.send();
-  
 }
 
-var addMarker = function( name, latlng, id, icon) {
-
-  var opts = {
-    icon: icon,
-    title: name,
-    guid: id
-  };
-
-  L.marker( latlng, opts )
+/**
+ * Adds a marker to the Leaflet map
+ * @param {object} data    input data
+ * @param {[type]} strHtml an html string used for the leaflet divIcon
+ */
+var addMarker = function( data, strHtml) {
+  var opts = formatMarker ( data, strHtml )
+  L.marker( data.latLng, opts )
    .addTo( houses )
    .on( 'click', function(e) { 
       map.panTo(latlng,{easeLinearity : 0.05, duration: 1});
     });
 };
 
+/**
+ * Iterates over the data set getting marker SVG's and putting 
+ * them on the leaflet map.
+ */
 for (var i = 0; i < data.length; i++) {
-  getMarkerSvg( addMarker, data[i] );
+  getMarkerSvg( addMarker, data[i], data[i].icon.options.iconUrl );
 }
 
 /*  -----------                     -----------
