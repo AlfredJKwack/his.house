@@ -30,7 +30,21 @@ h2 a {
     text-decoration: none;
     color: #A92128;
 }
+@keyframes bounce {
+  0%, 100% {
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                     transform: translate3d(0,0,0);
+               transform-style: preserve-3d;
+                    text-shadow: 0 0 0 rgba(0,0,0,.9);
+  }
 
+  70% {
+    transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+                     transform: translate3d(0, -2px, 0);
+               transform-style: preserve-3d;
+                    text-shadow: 0 15px 15px rgba(0,0,0,.5);
+  }
+}
 #map { 
 	position:absolute; 
 	top:0; 
@@ -204,6 +218,10 @@ div.icon-wrapper, svg > path {
 	-moz-transition-duration: 2s;
 	-o-transition-duration: 2s;
 	transition-duration: 2s;
+	animation-name: bounce;
+	animation-duration: 0.4s;
+	animation-delay: 1s;
+	transform-origin: center bottom;	
 }
 .lgd-offset-text {
 	margin-left: -30px;
