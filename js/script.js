@@ -11,7 +11,7 @@ Array.prototype.find||Object.defineProperty(Array.prototype,"find",{value:functi
 L.mapbox.accessToken = 'pk.eyJ1IjoiYWxmcmVkamt3YWNrIiwiYSI6ImNqZGhheXpoeDB1ZjIyeHBpNjRhNnIwdDAifQ.4lJHofm8CBd2lKB7djcepQ';
 
 var mapboxTiles = L.tileLayer(
-    'https://api.mapbox.com/styles/v1/alfredjkwack/cjdnk3zh92mow2rqvj4s7k7g1/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken
+    'https://api.mapbox.com/styles/v1/alfredjkwack/ck9bpqquv09e81ipm77a070aa/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken
     );
 var houses = L.layerGroup();
 
