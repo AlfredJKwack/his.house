@@ -10,7 +10,9 @@ Array.prototype.find||Object.defineProperty(Array.prototype,"find",{value:functi
 
 L.mapbox.accessToken = 'pk.eyJ1IjoiYWxmcmVkamt3YWNrIiwiYSI6ImNqZGhheXpoeDB1ZjIyeHBpNjRhNnIwdDAifQ.4lJHofm8CBd2lKB7djcepQ';
 
-var mapboxTiles = L.tileLayer('https://api.mapbox.com/v4/examples.a4c252ab/{z}/{x}/{y}{r}.png?access_token=' + L.mapbox.accessToken);
+var mapboxTiles = L.tileLayer(
+    'https://api.mapbox.com/styles/v1/alfredjkwack/cjdnk3zh92mow2rqvj4s7k7g1/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken
+    );
 var houses = L.layerGroup();
 
 /*  -----------                     -----------
@@ -174,6 +176,8 @@ var latLngHome = data.find(isHome).latLng;
 
 var map = L.map('map', { 
   attributionControl:false,
+  tileSize: 512,
+  zoomOffset: -1,
   minZoom   : 10, 
   maxZoom   : 17,
   zoom      : defaultZoom,
