@@ -1,0 +1,330 @@
+body {
+    background: #938982;
+    background: url("../img/bg.jpg");
+      background-attachment: scroll;
+      background-size: auto;
+    background-size: cover;
+    height: 100vh;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+.container {
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 2rem;
+    padding-bottom: 2rem;    
+}
+.visualization {
+    min-width: 300px;
+    margin: 20px;
+}
+.tab-content, .credits, .fresh-table{
+    box-shadow: -15px 27px 69px rgba(0,0,0,.30);
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+h1 {
+    color: #444;
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+/** 
+*  Heatmap diagram styling 
+**/
+
+    #heatmap .cell:hover,
+    #heatmap .cell-value {
+        cursor: pointer;
+    }
+    #heatmap .labelHighlight{
+        font-weight: bold;
+    }
+    #heatmap .y-label, #heatmap .x-label {
+        font-size: 8px;
+    }
+
+/** 
+*  Arc diagram styling 
+**/
+
+    .arc-diagram-locked{
+        border-radius: 50%;
+        overflow:visible;
+        filter: 
+            hue-rotate(90deg) 
+            saturate(100%) 
+            brightness(100%);         
+    }
+    .arc-diagram-node text {
+        font-size: 10px;
+        cursor: pointer;
+    }
+    .arc-diagram-node text {
+        transition: all 0.3s ease-in-out
+    }
+    .arc-diagram-link {
+        cursor: pointer;
+        transition: stroke 0.3s ease; /* Add transition for smooth color change */
+        transition: stroke-opacity 0.25s ease-in-out; /* Add transition for smooth opacity change */
+    }
+    .streamgraph-path{
+        cursor: pointer;
+    }
+    .stream-locked {
+        filter: 
+            hue-rotate(180deg) 
+            saturate(130%) 
+            brightness(130%);
+        stroke-width: 2px;
+        stroke-opacity: 1;
+        stroke: #ffffff;
+    }
+    #gui {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 10; /* Ensure it's above other elements */
+    }
+
+/**
+*  dat.gui specifics 
+**/
+    .dg .property-name {
+        width: 60%;
+    }
+    .dg .c {
+        width: 40%;
+    }
+    .dg .c select {
+        margin-top: 5px;
+        margin-left: -5px;
+        width: 105%;
+    }
+
+/**
+* Tab navigation styling
+*/
+    .nav-tabs {
+        border-bottom: 0px solid rgba(255, 255, 255, 0.2);  
+        border-radius: 8px 8px 0 0;
+    }
+
+    .nav-tabs .nav-item {
+        margin-bottom: 0; /* Remove bottom margin */
+        margin-right: 4px;
+        display: flex; /* Add flex display */
+        align-items: flex-end; /* Align items to bottom */
+    }
+
+    .nav-tabs .nav-link {
+        color: rgba(255, 255, 255, 0.7);
+        border: none;
+        padding: 0.75rem 1.25rem;
+        font-weight: 500;
+        transition: all 0.2s ease-in-out;
+        position: relative;
+        border-radius: 6px 6px 0 0;
+        background: rgba(0, 0, 0, 0.2);    margin-bottom: -2px; /* Adjust to align with border */
+        display: flex; /* Add flex display */
+        align-items: center; /* Center content vertically */
+    }
+    
+
+    .nav-tabs .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: transparent;
+        transition: all 0.2s ease-in-out;
+        bottom: -2px; /* Adjust positioning of underline */
+    }
+
+    .nav-tabs .nav-link:hover {
+        color: #FFB74D;
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-tabs .nav-link.active {
+        color: #fff;
+        background: #FF9800;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .nav-tabs .nav-link.active::after {
+        background: #fff;
+    }
+
+    .tab-content {
+        background: #fff;
+        border-top-left-radius: 0rem;
+        border-top-right-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+        padding: 1.2rem;
+    }
+
+/**
+*  Credits section styling 
+**/
+
+    .credits {
+        background: #fff;
+        border-radius: 0.5rem;
+        padding: 2rem;
+    }
+
+    .credits h2 {
+        color: #444;
+        margin-bottom: 1rem;
+        font-weight: 500;
+        margin-top: 0;
+    }
+
+    .credits a {
+        color: #FF9800;
+        text-decoration: none;
+        transition: color 0.2s ease-in-out;
+    }
+
+    .credits a:hover {
+        color: #F57C00;
+    }
+
+/**
+*  Tutorial section styling 
+**/
+
+    .pocket-data{
+        position: relative;
+    }
+    .tutorial-popup {
+        cursor: pointer;
+        position: absolute;
+        top: -80px;
+        right: 1rem;
+        background: white;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        max-width: 11rem;
+        font-size: 0.9rem;
+        border: 2px solid #333;
+        z-index: 1000;
+        box-shadow: -15px 27px 69px rgba(0,0,0,.30);        
+    }
+    
+    .tutorial-popup::before {
+        content: '';
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        background: white;
+        border: 2px solid #333;
+        border-radius: 50%;
+        top: -15px;
+        left: 20px;
+        z-index: -1;
+    }
+
+    .tutorial-popup .icon-background {
+        color: #fff;
+        background: #FF9800;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        border-radius: 50%;
+        position: absolute;
+        top: 11px;
+        right: 12px;
+        width: 1.25rem;
+        height: 1.25rem;     
+    }
+    .tutorial-popup i {
+        position: absolute;
+        top: -0.27rem;
+    }
+
+    .tutorial-popup-text {
+        font-family: 'Comic Sans MS', cursive;
+        color: #333;
+        line-height: 1.4;
+    }   
+    
+    .popup-arrow {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        stroke: #333;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-width: 4px;
+        stroke-linecap: round;
+        /* Add white outline around stroke */
+        stroke-linejoin: round;
+        -webkit-filter: drop-shadow(0px 0px 1px white);
+    }
+    
+    .arrow-up {
+        top: -50px;
+        left: 71px;
+     
+    }
+    
+    .arrow-down {
+        bottom: -60px;
+        left: 30px;
+    }
+
+/**
+*  Tutorial section animations 
+**/
+
+    .tutorial-popup {
+        animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+        0% {transform: translateY(-10px)}
+        50% {transform: translateY(0px)}
+        100% {transform: translateY(-10px)}
+    }
+
+    #upArrowLine {
+        animation: upArrowAnimation 3000ms linear infinite normal forwards;
+    }
+    @keyframes upArrowAnimation { 
+        0% {transform: translate(182.65858px,298.439135px) scale(1,0.875533)} 
+        50% {transform: translate(182.65858px,298.439135px) scale(1,1)} 
+        100% {transform: translate(182.65858px,298.439135px) scale(1,0.872553)}
+    }
+
+    #downArrowLine {
+        animation: downArrowAnimation 3000ms linear infinite normal forwards;
+    }
+    @keyframes downArrowAnimation { 
+        0% {transform: translate(225.7159px,384.389646px) scale(1,1)} 
+        50% {transform: translate(225.7159px,384.389646px) scale(1,0.895848)} 
+        100% {transform: translate(225.7159px,384.389646px) scale(1,1)}
+    }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .nav-tabs .nav-link {
+        padding: 0.5rem 1rem 0rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .tab-content {
+        padding: 1rem;
+    }
+}
